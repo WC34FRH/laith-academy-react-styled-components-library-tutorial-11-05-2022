@@ -1,22 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import styled, { css } from "styled-components";
+
+const Wrapper = styled.section`
+  padding: 4rem;
+  margin: 2 rem;
+  background-color: ${({ color }) => (color ? color : "papayawhip")};
+  ${({ is3D }) =>
+    is3D &&
+    css`
+      background-color: #282c34;
+      box-shadow: 1rem 1rem 2rem black;
+      border: 0.1rem solid yellow;
+    `}
+`;
+
+const Title = styled.h1`
+  font-size: 1.5rem;
+  text-align: center;
+  color: palevioletred;
+`;
+
+const CircleWrapper = styled(Wrapper)`
+  border-radius: 100%;
+`;
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Wrapper>
+          <Title>Hello World!</Title>
+        </Wrapper>
+        <Wrapper color={"white"}>
+          <Title>Hello World!</Title>
+        </Wrapper>
+        <Wrapper color={"white"} is3D={true}>
+          <Title>Hello World!</Title>
+        </Wrapper>
+        <CircleWrapper color={"purple"} is3D={true}>
+          Hello
+        </CircleWrapper>
       </header>
     </div>
   );
